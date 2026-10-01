@@ -41,6 +41,7 @@ The following models were evaluated:
 
 - Linear regression
 - Quadratic mixture regression
+- Ridge-regularized quadratic mixture regression
 
 The quadratic mixture model includes interaction terms:
 
@@ -60,6 +61,26 @@ For interior mixture compositions, LOOCV produced the following results:
 | Quadratic mixture model | 1.709 | 1.466 | 4.159 |
 
 The quadratic mixture model reduced the mean ΔE by approximately 24% compared with the linear model within the interpolation region.
+
+## Ridge Regularization
+
+Ridge regression was applied to the quadratic mixture model to investigate whether regularization could improve prediction stability.
+
+Several regularization strengths were evaluated using LOOCV.
+
+| Alpha | Mean ΔE | Median ΔE | Max ΔE | Interior Mean ΔE |
+|---:|---:|---:|---:|---:|
+| 0.0001 | 3.042 | 1.541 | 21.162 | 1.708 |
+| 0.001 | 2.971 | 1.536 | 19.691 | 1.699 |
+| 0.01 | 2.628 | 1.433 | 13.643 | 1.647 |
+| 0.1 | 2.597 | 1.982 | 11.940 | 2.081 |
+| 1.0 | 6.073 | 5.257 | 17.479 | 5.228 |
+
+![Effect of Ridge Regularization](figures/ridge_alpha_comparison.png)
+
+Moderate regularization improved the stability of the quadratic mixture model. In this synthetic dataset, α = 0.01 provided a good balance between reducing large endpoint errors and maintaining prediction accuracy within the interior mixture region.
+
+Stronger regularization reduced the worst-case error further at α = 0.1, but increased prediction error within the interior region. At α = 1.0, overall performance deteriorated substantially.
 
 ## Error Analysis
 
@@ -87,8 +108,9 @@ The three pure-component samples (S01–S03) showed substantially larger predict
         README.md
 
     src/
-        data_validation.py
-        visualization.py
-        linear_model.py
-        quadratic_model.py
-        model_evaluation.py
+    data_validation.py
+    visualization.py
+    linear_model.py
+    quadratic_model.py
+    ridge_model.py
+    model_evaluation.py
