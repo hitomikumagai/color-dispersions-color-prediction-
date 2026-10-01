@@ -69,6 +69,10 @@ When a pure-component endpoint was left out during cross-validation, the model h
 
 This suggests that prediction reliability depends not only on model complexity, but also on whether the target composition lies within the experimental design space.
 
+![LOOCV Prediction Error](figures/loocv_deltaE_comparison.png)
+
+The three pure-component samples (S01–S03) showed substantially larger prediction errors than the interior mixture samples. When these endpoints were left out during LOOCV, prediction required extrapolation beyond the composition range represented in the remaining training data.
+
 ## Limitations
 
 - The dataset used in this repository is synthetic.

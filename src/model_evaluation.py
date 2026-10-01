@@ -3,6 +3,7 @@ import pandas as pd
 
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import LeaveOneOut
+import matplotlib.pyplot as plt
 
 
 # -----------------------------
@@ -121,3 +122,40 @@ print("\nQuadratic Mixture Model")
 print(f"Mean ΔE:   {np.mean(de_quadratic[~pure_mask]):.3f}")
 print(f"Median ΔE: {np.median(de_quadratic[~pure_mask]):.3f}")
 print(f"Max ΔE:    {np.max(de_quadratic[~pure_mask]):.3f}")
+
+
+# -----------------------------
+# Visualize prediction errors
+# -----------------------------
+
+plt.figure(figsize=(10, 5))
+
+plt.plot(
+    df["sample"],
+    de_linear,
+    marker="o",
+    label="Linear"
+)
+
+plt.plot(
+    df["sample"],
+    de_quadratic,
+    marker="o",
+    label="Quadratic mixture"
+)
+
+plt.xlabel("Sample")
+plt.ylabel("ΔE*ab")
+plt.title("LOOCV Prediction Error by Sample")
+plt.xticks(rotation=45)
+plt.legend()
+plt.grid(alpha=0.3)
+plt.tight_layout()
+
+plt.savefig(
+    "figures/loocv_deltaE_comparison.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
+plt.show()
