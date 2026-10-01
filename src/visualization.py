@@ -30,6 +30,12 @@ plt.axvline(0, linewidth=0.8)
 plt.grid(alpha=0.3)
 plt.tight_layout()
 
+plt.savefig(
+    "figures/ab_color_distribution.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
 plt.show()
 
 
@@ -52,4 +58,11 @@ ax.set_zlabel("L*")
 ax.set_title("Color Distribution in CIELAB Space")
 
 plt.tight_layout()
+
+plt.savefig(
+    "figures/cielab_3d_distribution.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
 plt.show()

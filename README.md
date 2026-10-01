@@ -23,6 +23,18 @@ A + B + C = 1
 
 Synthetic data are used to avoid disclosure of proprietary experimental data.
 
+## Color Distribution
+
+The synthetic samples were visualized in CIELAB color space to examine the distribution of the dataset.
+
+### a*-b* Color Distribution
+
+![a*-b* Color Distribution](figures/ab_color_distribution.png)
+
+### 3D CIELAB Distribution
+
+![3D CIELAB Distribution](figures/cielab_3d_distribution.png)
+
 ## Methods
 
 The following models were evaluated:
